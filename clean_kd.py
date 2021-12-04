@@ -3,11 +3,14 @@ def clean_kd(kd):
     Cleaning the Kidney Disease dataset
 
     INPUT
+    kd: The kidney disease dataframe
 
     OUTPUT
+    kd: A cleaned version of the kidney disease dataframe
+    y: A vector containing the classes
 
     AUTHOR
-    
+    Kevin Michalewicz
     '''
     # kd = pd.read_csv("kidney_disease.csv").set_index('id')
 
