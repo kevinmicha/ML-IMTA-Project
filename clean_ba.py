@@ -14,8 +14,8 @@ def clean_ba(ba):
     '''
 
     # get labels
-    y = kd['class']
-    kd.drop(columns='class', inplace=True)
+    y = ba['class']
+    ba.drop(columns='class', inplace=True)
 
     # normalize data
     ba = (ba - ba.mean())/ba.std()
