@@ -3,6 +3,10 @@
 # a classification project at IMT Atlantique. Authors: Martina 
 # BALBI, Mateo BENTURA, Ezequiel CENTOFANTI and Kevin MICHALEWICZ.
 # ================================================================
+import pandas as pd
+
+from sklearn.decomposition import PCA
+from mlxtend.plotting import plot_pca_correlation_graph
 
 def pca(dataset, dataset_name):
     '''

@@ -3,6 +3,8 @@
 # datasets for a classification project at IMT Atlantique. Authors:  
 # Martina BALBI, Mateo BENTURA, Ezequiel CENTOFANTI and Kevin MICHALEWICZ.
 # ========================================================================
+import pandas as pd
+import numpy as np
 
 def clean_normalize_kd(kd):
     '''
