@@ -21,6 +21,8 @@ def pca(dataset, dataset_name):
     OUTPUT
     dataset_after_pca: A PCA-transformed version of the original dataset
     
+    AUTHOR
+    Kevin Michalewicz
     '''
     ncomp_kd = 10 # number of components for kidney disease
     ncomp_ba = 2 # number of components for banknote authentication
