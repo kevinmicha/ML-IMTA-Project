@@ -5,7 +5,7 @@
 # ================================================================
 import pandas as pd
 
-from NN_util import *
+from nn_util import *
 
 from sklearn.decomposition import PCA
 from mlxtend.plotting import plot_pca_correlation_graph
@@ -44,7 +44,7 @@ def pca(dataset, dataset_name):
 
     return dataset_after_pca
 
-def fit_NN(X_train, X_test, y_train, y_test, dataset_name):
+def fit_nn(X_train, X_test, y_train, y_test, dataset_name):
     '''
     Neural Network Classifier
 
