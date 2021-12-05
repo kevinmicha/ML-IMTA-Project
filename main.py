@@ -12,5 +12,5 @@ from mlxtend.plotting import plot_pca_correlation_graph
 from clean_normalize import *
 from ml_functions import *
 
-ba = pd.read_csv("data_banknote_authentication.txt")
-kd = pd.read_csv("kidney_disease.csv").set_index('id')
+ba = pd.read_csv("datasets/data_banknote_authentication.txt")
+kd = pd.read_csv("datasets/kidney_disease.csv").set_index('id')
