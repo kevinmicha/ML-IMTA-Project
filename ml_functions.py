@@ -23,17 +23,17 @@ def pca(dataset, dataset_name):
         numerical_columns = dataset.columns[dataset.dtypes=='float64']
         categorical_columns = dataset.columns[dataset.dtypes=='uint8']
         pca = PCA(n_components=ncomp_kd)
-        pca.fit(kd[numerical_columns])
+        pca.fit(dataset[numerical_columns])
         print('{} components represent {:.2f} of the variance'.format(ncomp_kd, sum(pca.explained_variance_ratio_)))
-        # figure, correlation_matrix = plot_pca_correlation_graph(kd[numerical_columns], numerical_columns, figure_axis_size=10)
-        kd_tf_numerical = pca.transform(kd[numerical_columns])
-        dataset_after_pca = pd.concat([pd.DataFrame(data=kd_tf_numerical, index=kd.index), kd[categorical_columns]], axis=1)
+        # figure, correlation_matrix = plot_pca_correlation_graph(dataset[numerical_columns], numerical_columns, figure_axis_size=10)
+        kd_tf_numerical = pca.transform(dataset[numerical_columns])
+        dataset_after_pca = pd.concat([pd.DataFrame(data=kd_tf_numerical, index=dataset.index), dataset[categorical_columns]], axis=1)
 
     elif dataset_name == 'banknote-auth':
         pca = PCA(n_components=ncomp_ba)
-        pca.fit(ba)
+        pca.fit(dataset)
         print('{} components represent {:.2f} of the variance'.format(ncomp_ba, sum(pca.explained_variance_ratio_)))
-        # figure, correlation_matrix = plot_pca_correlation_graph(ba, ba.columns, figure_axis_size=10)
-        dataset_after_pca = pd.DataFrame(pca.transform(ba), index=ba.index)
+        # figure, correlation_matrix = plot_pca_correlation_graph(dataset, dataset.columns, figure_axis_size=10)
+        dataset_after_pca = pd.DataFrame(pca.transform(dataset), index=dataset.index)
 
     return dataset_after_pca
