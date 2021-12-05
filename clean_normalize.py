@@ -4,9 +4,9 @@
 # Martina BALBI, Mateo BENTURA, Ezequiel CENTOFANTI and Kevin MICHALEWICZ.
 # ========================================================================
 
-def clean_kd(kd):
+def clean_normalize_kd(kd):
     '''
-    Cleaning the Kidney Disease dataset
+    Cleaning and normalizing the Kidney Disease dataset
 
     INPUT
     kd: The kidney disease dataframe
@@ -49,9 +49,9 @@ def clean_kd(kd):
 
     return kd, y
 
-def clean_ba(ba):
+def clean_normalize_ba(ba):
     '''
-    Cleaning the Banknote Authentification dataset
+    Cleaning and normalizing the Banknote Authentification dataset
 
     INPUT
     ba: the banknote authentication dataset
