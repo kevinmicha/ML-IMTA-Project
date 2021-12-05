@@ -11,10 +11,10 @@ from ml_functions import *
 
 # Define network architecture
 class Net1(nn.Module):
-    def __init__(self,nb_features):
-        super(Net1,self).__init__()
+    def __init__(self, nb_features):
+        super(Net1, self).__init__()
         self.fc1 = nn.Linear(nb_features, 1)    
-    def forward(self,x):
+    def forward(self, x):
         out = self.fc1(x)
         out = torch.sigmoid(out)
         return out
@@ -37,19 +37,19 @@ def create_torch_dataset(X_train, X_test, y_train, y_test, batch_size=20):
     AUTHOR
     Ezequiel Centofanti
     '''
-    X_train_t = torch.Tensor( np.array(X_train) ) 
-    y_train_t = torch.Tensor( np.array(pd.DataFrame(y_train)) )
+    X_train_t = torch.Tensor(np.array(X_train)) 
+    y_train_t = torch.Tensor(np.array(pd.DataFrame(y_train)))
     y_train_t = y_train_t.type(torch.LongTensor)
     y_train_t = y_train_t.to(torch.float32)
     data_train = data_utils.TensorDataset(X_train_t, y_train_t)
-    train_loader = torch.utils.data.DataLoader(data_train, batch_size = batch_size)
+    train_loader = torch.utils.data.DataLoader(data_train, batch_size=batch_size)
 
-    X_test_t = torch.Tensor( np.array(X_test) ) 
-    y_test_t = torch.Tensor( np.array(pd.DataFrame(y_test)) )
+    X_test_t = torch.Tensor(np.array(X_test)) 
+    y_test_t = torch.Tensor(np.array(pd.DataFrame(y_test)))
     y_test_t = y_test_t.type(torch.LongTensor)
     y_test_t = y_test_t.to(torch.float32)
     data_test = data_utils.TensorDataset(X_test_t, y_test_t)
-    test_loader = torch.utils.data.DataLoader(data_test, batch_size = batch_size)
+    test_loader = torch.utils.data.DataLoader(data_test, batch_size=batch_size)
 
     return train_loader, test_loader
 
@@ -126,5 +126,5 @@ def evaluation(model, test_loader, criterion):
             pred_total += 1
 
     # Calculate and print avg test accuracy
-    print('test accuracy: %2d%% (%2d/%2d)' % ( 100 * pred_correct / pred_total, pred_correct, pred_total))
+    print('test accuracy: %2d%% (%2d/%2d)' % (100 * pred_correct / pred_total, pred_correct, pred_total))
     return y_predicted
