@@ -14,7 +14,7 @@ def clean_ba(ba):
     '''
 
     # Adding column names
-    ba.columns =['V1', 'V2', 'V3', 'V4', 'class']
+    ba.columns = ['variance', 'skewness', 'curtosis', 'entropy', 'class']
 
     # Get labels
     y = ba['class']
