@@ -13,11 +13,14 @@ def clean_ba(ba):
     Martina Balbi
     '''
 
-    # get labels
+    # Adding column names
+    ba.columns =['V1', 'V2', 'V3', 'V4', 'class']
+
+    # Get labels
     y = ba['class']
     ba.drop(columns='class', inplace=True)
 
-    # normalize data
+    # Normalize data
     ba = (ba - ba.mean())/ba.std()
 
     return ba, y
