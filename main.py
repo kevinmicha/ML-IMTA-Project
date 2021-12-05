@@ -5,7 +5,7 @@
 # ================================================================
 from clean_normalize import *
 from ml_functions import *
-from nn_classifier import *
+from nn_util import *
 from sklearn.model_selection import train_test_split
 
 # Import and clean datasets
