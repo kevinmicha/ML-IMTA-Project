@@ -1,3 +1,9 @@
+# ========================================================================
+# This file contains functions that clean and normalize two particular 
+# datasets for a classification project at IMT Atlantique. Authors:  
+# Martina BALBI, Mateo BENTURA, Ezequiel CENTOFANTI and Kevin MICHALEWICZ.
+# ========================================================================
+
 def clean_kd(kd):
     '''
     Cleaning the Kidney Disease dataset
@@ -42,3 +48,30 @@ def clean_kd(kd):
     y = np.logical_xor(y,1).astype(int)
 
     return kd, y
+
+def clean_ba(ba):
+    '''
+    Cleaning the Banknote Authentification dataset
+
+    INPUT
+    ba: the banknote authentication dataset
+
+    OUTPUT
+    ba: clean banknote authentication dataset
+    y: labels
+
+    AUTHOR
+    Martina Balbi
+    '''
+
+    # Adding column names
+    ba.columns = ['variance', 'skewness', 'curtosis', 'entropy', 'class']
+
+    # Get labels
+    y = ba['class']
+    ba.drop(columns='class', inplace=True)
+
+    # Normalize data
+    ba = (ba - ba.mean())/ba.std()
+
+    return ba, y
