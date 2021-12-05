@@ -9,7 +9,8 @@ import numpy as np
 
 from sklearn.decomposition import PCA
 from mlxtend.plotting import plot_pca_correlation_graph
-f
+from clean_normalize import *
+from ml_functions import *
 
 ba = pd.read_csv("data_banknote_authentication.txt")
 kd = pd.read_csv("kidney_disease.csv").set_index('id')
