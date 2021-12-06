@@ -32,5 +32,5 @@ def plot_confusion_matrix(y_test, y_pred, model_name, dataset_name):
     plt.xlabel('Predicted', fontsize=14)
     plt.ylabel('True', fontsize=14)
     plt.title('Confusion matrix for %s dataset using %s' % (dataset_name, model_name), fontsize=15)
-    plt.savefig("plots/confusion_matrixes/Confustion_Matrix_%s_%s.jpg" % (dataset_name, model_name))
+    plt.savefig("plots/confusion_matrices/Confustion_Matrix_%s_%s.jpg" % (dataset_name, model_name))
     

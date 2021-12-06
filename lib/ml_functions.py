@@ -120,12 +120,10 @@ def fit_knn(X_train, X_test, y_train, y_test, dataset_name):
 
         knn = KNeighborsClassifier(n_neighbors=K)
         knn.fit(X_train, y_train)
-
         y_predicted = knn.predict(X_test)
-
         accuracy = knn.score(X_test, y_test)
 
-        print('K-Nearest neighbors test accuracy for dataset %s: %2d%% (%2d/%2d)' % (dataset_name,accuracy*100, accuracy*len(y_test), len(y_test)))
+        print('K-Nearest neighbors test accuracy for dataset %s: %.2f (%2d/%2d)' % (dataset_name,accuracy*100, accuracy*len(y_test), len(y_test)))
         print('---------------------------------')
 
         return y_predicted
