@@ -92,7 +92,7 @@ def training(n_epochs, train_loader, model, criterion, optimizer):
     return train_losses
 
 
-def evaluation(model, test_loader, criterion):
+def evaluation(model, test_loader, criterion, dataset):
     '''
     Evaluating a torch model and printing the accuracy over the test-set
 
@@ -126,5 +126,6 @@ def evaluation(model, test_loader, criterion):
             pred_total += 1
 
     # Calculate and print avg test accuracy
-    print('test accuracy: %2d%% (%2d/%2d)' % (100 * pred_correct / pred_total, pred_correct, pred_total))
+    print('Neural network test accuracy for dataset %s: %2d%% (%2d/%2d)' % (dataset,100 * pred_correct / pred_total, pred_correct, pred_total))
+    print('---------------------------------')
     return y_predicted
