@@ -49,6 +49,11 @@ models = ['knn', 'svm', 'gmm', 'nn']
 #y_test = [y_test_ba, y_test_kd]
 datasets = ['banknote-authentication', 'kidney-disease']
 
+
+#mientras que no estan todos los modelos (BORRAR DESPUES)
+plot_confusion_matrix(y_test_ba, y_pred_knn_ba, models[0], datasets[0])
+plot_confusion_matrix(y_test_kd, y_pred_knn_kd, models[0], datasets[1])
+
 #for i in range(len(models)):
 #    for j in range(len(y_test)):
 #        plot_confusion_matrix(y_test[j], y_pred[i][j], models[i], datasets[j])
