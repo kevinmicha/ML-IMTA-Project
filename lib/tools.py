@@ -22,11 +22,15 @@ def plot_confusion_matrix(y_test, y_pred, model_name, dataset_name):
     '''
     cm = confusion_matrix(y_test, y_pred)
     plt.figure(figsize=(8,8))
-    heatmap = sns.heatmap(cm,cmap="YlGnBu",linewidths=.5, annot=True, annot_kws={"size": 18}, fmt="d", xticklabels=['Authentic', 'Fake'], yticklabels=['Authentic', 'Fake'])
-    heatmap.set_xticklabels(heatmap.get_xticklabels(), fontsize=13) 
-    heatmap.set_yticklabels(heatmap.get_yticklabels(), fontsize=13) 
+    heatmap = sns.heatmap(cm,cmap="YlGnBu",linewidths=.5, annot=True, annot_kws={"size": 18}, fmt="d")
+    if dataset_name == 'banknote-authentication':
+        heatmap.set_xticklabels(['Authentic', 'Fake'], fontsize=13) 
+        heatmap.set_yticklabels(['Authentic', 'Fake'], fontsize=13) 
+    elif dataset_name == 'kidney-disease':
+        heatmap.set_xticklabels(['Not Diseased', 'Diseased'], fontsize=13) 
+        heatmap.set_yticklabels(['Not Diseased', 'Diseased'], fontsize=13)
     plt.xlabel('Predicted', fontsize=14)
     plt.ylabel('True', fontsize=14)
     plt.title('Confusion matrix for %s dataset using %s' % (dataset_name, model_name), fontsize=15)
-    plt.savefig("plots/confusion_matrixes/Confustion_Matrix_%s_%s.jpg" % ('banknote-auth', 'knn'))
+    plt.savefig("plots/confusion_matrixes/Confustion_Matrix_%s_%s.jpg" % (dataset_name, model_name))
     
