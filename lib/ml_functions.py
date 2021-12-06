@@ -7,7 +7,7 @@ from numpy.testing._private.utils import KnownFailureException
 import pandas as pd
 import matplotlib.pyplot as plt
 
-from nn_util import *
+from lib.nn_util import *
 
 from sklearn.decomposition import PCA
 from sklearn.neighbors import KNeighborsClassifier

@@ -6,8 +6,8 @@ import torch.optim as optim
 import torch.utils.data as data_utils
 from torch.utils.data.sampler import SubsetRandomSampler
 
-from clean_normalize import *
-from ml_functions import *
+from lib.clean_normalize import *
+from lib.ml_functions import *
 
 # Define network architecture
 class Net1(nn.Module):
