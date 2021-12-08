@@ -34,14 +34,13 @@ y_pred_knn_kd = fit_knn(X_train_kd, X_test_kd, y_train_kd, y_test_kd, 'kidney-di
 #y_pred_svm_ba = fit_svm(X_train_ba, X_test_ba, y_train_ba, y_test_ba, 'banknote-auth')
 #y_pred_svm_kd = fit_svm(X_train_kd, X_test_kd, y_train_kd, y_test_kd, 'kidney-disease')
 
-#Support Vector Machines
-#y_pred_gmm_ba = fit_gmm(X_train_ba, X_test_ba, y_train_ba, y_test_ba, 'banknote-auth')
-#y_pred_gmm_kd = fit_gmm(X_train_kd, X_test_kd, y_train_kd, y_test_kd, 'kidney-disease')
+# Gaussian Mixture Model
+y_pred_gmm_ba = fit_gmm(X_train_ba, X_test_ba, y_train_ba, y_test_ba, 'banknote-auth')
+y_pred_gmm_kd = fit_gmm(X_train_kd, X_test_kd, y_train_kd, y_test_kd, 'kidney-disease')
 
 # Neural network
 y_pred_nn_ba = fit_nn(X_train_ba, X_test_ba, y_train_ba, y_test_ba, 'banknote-auth')
 y_pred_nn_kd = fit_nn(X_train_kd, X_test_kd, y_train_kd, y_test_kd, 'kidney-disease')
-
 
 # Plot confusion matrixes
 models = ['knn', 'svm', 'gmm', 'nn']
