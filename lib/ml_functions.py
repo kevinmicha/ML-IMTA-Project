@@ -82,11 +82,11 @@ def fit_nn(X_train, X_test, y_train, y_test, dataset_name):
     elif dataset_name == 'banknote-auth':
         nb_features = 4
 
-    #test_loader, train_loader = create_torch_dataset(data_set_df, target_df)
-    train_loader, test_loader = create_torch_dataset(
+    # Create data-loaders
+    train_loader, val_loader, test_loader = create_torch_dataset(
         X_train, X_test, y_train, y_test)
 
-    # initialize the neural network
+    # Initialize the neural network
     model_ = Net1(nb_features)
 
     # Specify loss function (categorical cross-entropy)
@@ -97,20 +97,17 @@ def fit_nn(X_train, X_test, y_train, y_test, dataset_name):
 
     # Train model
     n_epochs = 80  # number of epochs to train the model
-    train_losses_1 = training(
+    train_losses_1, valid_losses_1 = training(
         n_epochs,
         train_loader,
+        val_loader,
         model_,
         criterion,
         optimizer)
 
     # Plot loss over training
-    #plt.plot(range(n_epochs), train_losses_1)
-    #plt.legend(['train', 'validation'], prop={'size': 10})
-    #plt.title('loss function', size=10)
-    #plt.xlabel('epoch', size=10)
-    #plt.ylabel('loss value', size=10)
-
+    plot_losses(train_losses_1, valid_losses_1, n_epochs, dataset_name)
+    
     return evaluation(model_, test_loader, criterion, dataset_name)
 
 
