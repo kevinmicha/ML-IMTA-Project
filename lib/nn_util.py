@@ -179,5 +179,5 @@ def plot_losses(train_losses, valid_losses, n_epochs, dataset_name):
     plt.title('Loss function - %s' % (dataset_name), size=10)
     plt.xlabel('epoch', size=10)
     plt.ylabel('Loss value', size=10)
-    plt.savefig("plots/NN_Loss/Losses_%s.jpg" % (dataset_name))
+    plt.savefig("plots/nn_loss/loss_%s.jpg" % (dataset_name))
     
