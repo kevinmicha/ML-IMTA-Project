@@ -13,6 +13,7 @@ from sklearn.decomposition import PCA
 from sklearn.neighbors import KNeighborsClassifier
 from mlxtend.plotting import plot_pca_correlation_graph
 from sklearn.mixture import GaussianMixture
+from sklearn import svm
 from sklearn.metrics import accuracy_score
 
 
@@ -166,5 +167,25 @@ def fit_gmm(X_train, X_test, y_train, y_test, dataset_name):
     print('Gaussian mixture model test for dataset %s: %2d%% (%2d/%2d)' %
           (dataset_name, accuracy * 100, accuracy * len(y_test), len(y_test)))
     print('---------------------------------')
+
+    return y_predicted
+
+def fit_svm(X_train, X_test, y_train, y_test, dataset_name):
+    '''
+    Support Vector Machine (SVM) classifier
+
+    INPUT
+    X_train: features for training
+    X_test: features for testing
+    y_train: targets for training (**not used: unsupervised method**)
+    y_test: targets for testing
+    dataset_name: A string containing the dataset name
+
+    OUTPUT
+    y_predicted: predicted labels for the testing set
+
+    AUTHOR
+    Kevin Michalewicz
+    '''
 
     return y_predicted
