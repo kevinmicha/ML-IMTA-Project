@@ -187,5 +187,12 @@ def fit_svm(X_train, X_test, y_train, y_test, dataset_name):
     AUTHOR
     Kevin Michalewicz
     '''
+    clf = svm.SVC()
+    clf.fit(X_train, y_train)
+    y_predicted = clf.predict(X_test)
+    accuracy = accuracy_score(y_test, y_predicted)
+    print('Support Vector Machine test for dataset %s: %2d%% (%2d/%2d)' %
+          (dataset_name, accuracy * 100, accuracy * len(y_test), len(y_test)))
+    print('---------------------------------')
 
     return y_predicted
