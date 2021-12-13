@@ -167,8 +167,9 @@ def fit_gmm(X_train, X_test, y_train, y_test, dataset_name):
     print('Gaussian mixture model test for dataset %s: %2d%% (%2d/%2d)' %
           (dataset_name, accuracy * 100, accuracy * len(y_test), len(y_test)))
     print('---------------------------------')
+    # X_samples, y_samples = gm.sample(n_samples=1000)
 
-    return y_predicted
+    return y_predicted, gm.means_, gm.covariances_
 
 def fit_svm(X_train, X_test, y_train, y_test, dataset_name):
     '''

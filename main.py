@@ -8,6 +8,7 @@ from lib.ml_functions import *
 from lib.nn_util import *
 from sklearn.model_selection import train_test_split
 from lib.tools import *
+import matplotlib.pyplot as plt
 
 # Import and clean datasets
 ba = pd.read_csv("datasets/data_banknote_authentication.txt")
@@ -17,6 +18,8 @@ ba, y_ba = clean_normalize_ba(ba)
 
 # Perform PCA for the kidney-disease dataset
 kd = pca(kd, 'kidney-disease')
+# Perform PCA for banknote-authentication dataset, only to be used by GMM
+ba_pca = pca(ba, 'banknote-auth')
 
 # Select dataset to fit
 data_set_df = ba
@@ -34,9 +37,11 @@ y_pred_knn_kd = fit_knn(X_train_kd, X_test_kd, y_train_kd, y_test_kd, 'kidney-di
 y_pred_svm_ba = fit_svm(X_train_ba, X_test_ba, y_train_ba, y_test_ba, 'banknote-auth')
 y_pred_svm_kd = fit_svm(X_train_kd, X_test_kd, y_train_kd, y_test_kd, 'kidney-disease')
 
+
 # Gaussian Mixture Model
-y_pred_gmm_ba = fit_gmm(X_train_ba, X_test_ba, y_train_ba, y_test_ba, 'banknote-auth')
-y_pred_gmm_kd = fit_gmm(X_train_kd, X_test_kd, y_train_kd, y_test_kd, 'kidney-disease')
+X_train_ba_pca, X_test_ba_pca, y_train_ba_pca, y_test_ba_pca = train_test_split(ba_pca, y_ba, test_size=0.3, random_state=48)
+y_pred_gmm_ba, means, covariances = fit_gmm(X_train_ba_pca, X_test_ba_pca, y_train_ba_pca, y_test_ba_pca, 'banknote-auth')
+y_pred_gmm_kd, _, _ = fit_gmm(X_train_kd, X_test_kd, y_train_kd, y_test_kd, 'kidney-disease')
 
 # Neural network
 y_pred_nn_ba = fit_nn(X_train_ba, X_test_ba, y_train_ba, y_test_ba, 'banknote-auth')
@@ -51,3 +56,5 @@ datasets = ['banknote-authentication', 'kidney-disease']
 for i in range(len(models)):
     for j in range(len(y_test)):
         plot_confusion_matrix(y_test[j], y_pred[i][j], models[i], datasets[j])
+
+plot_gmm_covariances(X_train_ba_pca,y_train_ba_pca, means, covariances)
