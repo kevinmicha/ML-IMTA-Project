@@ -43,19 +43,17 @@ def plot_gmm_covariances(X_train, y_train, means, covariances):
     Function to plot covariances of the gaussian mixture model.
 
     INPUT
-    y_test: test labels
-    y_train: predicted labels
-    model_name: name of the classifier used to predict the labels
-    dataset_name: name of the dataset
+    X_train: train labels
+    y_train: predicted train labels
+    means: means of the gaussian mixture models
+    covariances: covariance of the gaussian mixture models
 
     AUTHOR
     Mateo Bentura
     '''
     plt.figure(figsize=(8,8))
     ax = plt.gca()
-    # plt.scatter(X_samples_gmm_ba[:,0], X_samples_gmm_ba[:,1], c=y_samples_gmm_ba, cmap='GnBu')
     colors = ["tab:red", "tab:blue"]
-    # colors = ["navy", "darkorange"]
     for n in range(2):
         ax.scatter(X_train[y_train==n][0], X_train[y_train==n][1], c=colors[n], label=str(n), alpha=0.6, marker='x')
         eig_val, eig_vect = np.linalg.eigh(covariances[n])
