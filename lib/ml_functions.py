@@ -150,7 +150,7 @@ def fit_gmm(X_train, X_test, y_train, y_test, dataset_name):
     INPUT
     X_train: features for training
     X_test: features for testing
-    y_train: targets for training (**not used: unsupervised method**)
+    y_train: targets for training
     y_test: targets for testing
     dataset_name: A string containing the dataset name
 
@@ -160,16 +160,27 @@ def fit_gmm(X_train, X_test, y_train, y_test, dataset_name):
     AUTHOR
     Mateo Bentura
     '''
-    gm = GaussianMixture(n_components=y_train.nunique())
-    gm.fit(X_train)
-    y_predicted = gm.predict(X_test)
+    classes = y_test.nunique()
+    
+    if dataset_name == 'banknote-auth':
+        K = 4
+
+    if dataset_name == 'kidney-disease':
+        K = 2
+ 
+    log_likelyhood = np.zeros(y_test.shape+(classes,))
+    for n in range(classes):
+        gm = GaussianMixture(n_components=K)
+        gm.fit(X_train[y_train==n])
+        log_likelyhood[:,n] = gm.score_samples(X_test)
+
+    y_predicted = log_likelyhood.argmax(axis=1)
     accuracy = accuracy_score(y_test, y_predicted)
     print('Gaussian mixture model test for dataset %s: %2d%% (%2d/%2d)' %
           (dataset_name, accuracy * 100, accuracy * len(y_test), len(y_test)))
     print('---------------------------------')
-    # X_samples, y_samples = gm.sample(n_samples=1000)
 
-    return y_predicted, gm.means_, gm.covariances_
+    return y_predicted
 
 def fit_svm(X_train, X_test, y_train, y_test, dataset_name):
     '''

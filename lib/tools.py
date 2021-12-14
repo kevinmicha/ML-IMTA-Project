@@ -35,39 +35,4 @@ def plot_confusion_matrix(y_test, y_pred, model_name, dataset_name):
     plt.ylabel('True', fontsize=14)
     plt.title('Confusion matrix for %s dataset using %s' % (dataset_name, model_name), fontsize=15)
     plt.savefig("plots/confusion_matrices/Confusion_Matrix_%s_%s.jpg" % (dataset_name, model_name))
-    
 
-
-def plot_gmm_covariances(X_train, y_train, means, covariances):
-    '''
-    Function to plot covariances of the gaussian mixture model.
-
-    INPUT
-    X_train: train labels
-    y_train: predicted train labels
-    means: means of the gaussian mixture models
-    covariances: covariance of the gaussian mixture models
-
-    AUTHOR
-    Mateo Bentura
-    '''
-    plt.figure(figsize=(8,8))
-    ax = plt.gca()
-    colors = ["tab:red", "tab:blue"]
-    for n in range(2):
-        ax.scatter(X_train[y_train==n][0], X_train[y_train==n][1], c=colors[n], label=str(n), alpha=0.6, marker='x')
-        eig_val, eig_vect = np.linalg.eigh(covariances[n])
-        radius_x, radius_y = np.sqrt(2)*np.sqrt(eig_val)
-        u = eig_vect[0] / np.linalg.norm(eig_vect[0])
-        angle = 180 * np.arctan2(u[1], u[0]) / np.pi + 180
-        ell = patches.Ellipse(
-            means[n], width=radius_x*2, height=radius_y*2, angle=angle, color=colors[n]
-        )
-        ell.set_clip_box(ax.bbox)
-        ell.set_alpha(0.5)
-        ax.add_artist(ell)
-        ax.set_aspect("equal", "datalim")
-
-    plt.legend()
-    plt.title('Scatter plot of PCA components for dataset banknote-authentication\nwith Gaussian mixture models')
-    plt.savefig("plots/covariance_plots/Covariance_Plot_banknote-authentication")
