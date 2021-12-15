@@ -13,7 +13,7 @@ In this repository you will find the final project for the UE Machine Learning (
 
 ### Environement 
 
-In order to be able to execute the following steps, you will need to create a Python 3 Environement.
+In order to be able to execute the following steps, you will need to create a Python Environement.
 This can be done by:
 
 ```bash
@@ -43,6 +43,8 @@ ML-IMTA-Project
 ```
 
 ### Execution 
+
+In a Python Enviornment with the adequate project dependencies, only the following line has to be written:
 
 ```bash
 python main.py 
