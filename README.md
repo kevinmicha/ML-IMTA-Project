@@ -35,9 +35,9 @@ ML-IMTA-Project
 │   ├── ml_functions.py                         # implementations of ML methods
 │   ├── nn_util.py                              # some useful tools for Neural Networks
 │   └── tools.py                                # some useful general tools
-├── plots                                          
-│   ├── confusion matrices
-│   └── nn_loss                          
+└── plots                                          
+    ├── confusion matrices
+    └── nn_loss                          
 ```
 
 ### Execution 
