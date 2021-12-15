@@ -5,6 +5,8 @@
 # ================================================================
 from sklearn.metrics import confusion_matrix
 from sklearn.metrics import f1_score
+from sklearn.metrics import precision_score
+from sklearn.metrics import recall_score
 import matplotlib.pyplot as plt
 import matplotlib.patches as patches
 import seaborn as sns
@@ -37,9 +39,9 @@ def plot_confusion_matrix(y_test, y_pred, model_name, dataset_name):
     plt.title('Confusion matrix for %s dataset using %s' % (dataset_name, model_name), fontsize=15)
     plt.savefig("plots/confusion_matrices/Confusion_Matrix_%s_%s.jpg" % (dataset_name, model_name))
 
-def get_f1_score(y_test, y_pred, model_name, dataset_name):
+def get_scores(y_test, y_pred, model_name, dataset_name):
     '''
-    Function to calculate F1 scores of the model
+    Function to calculate scores of the model (precision, recall, F1-score)
 
     INPUT
     y_test: test labels
@@ -51,9 +53,11 @@ def get_f1_score(y_test, y_pred, model_name, dataset_name):
     Martina Balbi
     '''
 
+    precision = precision_score(y_test, y_pred)
+    recall = recall_score(y_test, y_pred)
     score = f1_score(y_test, y_pred)
-    print('%s F1 Score for dataset %s: %.2f' %
-          (model_name, dataset_name, score))
+    print('%s F1 Score for dataset %s: %.2f, precision: %.2f, recall: %.2f' %
+          (model_name, dataset_name, score, precision, recall))
     print('---------------------------------')
 
     return 

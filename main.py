@@ -54,4 +54,4 @@ datasets = ['banknote-authentication', 'kidney-disease']
 for i in range(len(models)):
     for j in range(len(y_test)):
         plot_confusion_matrix(y_test[j], y_pred[i][j], models[i], datasets[j])
-        get_f1_score(y_test[j], y_pred[i][j], models[i], datasets[j])
+        get_scores(y_test[j], y_pred[i][j], models[i], datasets[j])
