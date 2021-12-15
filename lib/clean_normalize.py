@@ -20,8 +20,7 @@ def clean_normalize_kd(kd):
     AUTHOR
     Kevin Michalewicz
     '''
-    # kd = pd.read_csv("kidney_disease.csv").set_index('id')
-
+    # Transforming to numeric quantities three of the columns
     kd[['pcv', 'rc', 'wc']] = kd[['pcv', 'rc', 'wc']].apply(pd.to_numeric, errors='coerce')
 
     kd.columns = ['age', 'blood_pressure', 'specific_gravity', 'albumin', 'sugar', 'red_blood_cells', 'pus_cell',
@@ -30,10 +29,11 @@ def clean_normalize_kd(kd):
                 'hypertension', 'diabetes_mellitus', 'coronary_artery_disease', 'appetite', 'peda_edema',
                 'anemia', 'classification']
 
-    # Remove NaN
+    # Separating the columns: float64 and object
     numerical_columns = kd.columns[kd.dtypes=='float64']
     categorical_columns = kd.columns[kd.dtypes=='object']
 
+    # Replacing NaNs, tabs and whitespaces 
     kd[numerical_columns] = kd[numerical_columns].fillna(kd[numerical_columns].mean())
     kd[categorical_columns] = kd[categorical_columns].fillna(kd[categorical_columns].mode().iloc[0])
     kd[categorical_columns] = kd[categorical_columns].replace(to_replace={'\t': '', ' ': ''}, regex=True)
@@ -41,7 +41,7 @@ def clean_normalize_kd(kd):
     # Normalizing the data
     kd[numerical_columns] = (kd[numerical_columns] - kd[numerical_columns].mean()) / (kd[numerical_columns].std())
 
-    # Cast labels to True or False
+    # Casting labels to True or False
     kd = pd.get_dummies(kd, drop_first=True)
 
     # Extracting classes
@@ -69,11 +69,11 @@ def clean_normalize_ba(ba):
     # Adding column names
     ba.columns = ['variance', 'skewness', 'curtosis', 'entropy', 'class']
 
-    # Get labels
+    # Getting labels
     y = ba['class']
     ba.drop(columns='class', inplace=True)
 
-    # Normalize data
+    # Normalizing data
     ba = (ba - ba.mean())/ba.std()
 
     return ba, y
