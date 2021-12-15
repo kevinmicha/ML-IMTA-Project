@@ -4,6 +4,7 @@
 # Ezequiel CENTOFANTI and Kevin MICHALEWICZ.
 # ================================================================
 from sklearn.metrics import confusion_matrix
+from sklearn.metrics import f1_score
 import matplotlib.pyplot as plt
 import matplotlib.patches as patches
 import seaborn as sns
@@ -15,7 +16,7 @@ def plot_confusion_matrix(y_test, y_pred, model_name, dataset_name):
 
     INPUT
     y_test: test labels
-    y_train: predicted labels
+    y_pred: predicted labels
     model_name: name of the classifier used to predict the labels
     dataset_name: name of the dataset
 
@@ -36,3 +37,23 @@ def plot_confusion_matrix(y_test, y_pred, model_name, dataset_name):
     plt.title('Confusion matrix for %s dataset using %s' % (dataset_name, model_name), fontsize=15)
     plt.savefig("plots/confusion_matrices/Confusion_Matrix_%s_%s.jpg" % (dataset_name, model_name))
 
+def get_f1_score(y_test, y_pred, model_name, dataset_name):
+    '''
+    Function to calculate F1 scores of the model
+
+    INPUT
+    y_test: test labels
+    y_pred: predicted labels
+    model_name: name of the classifier used to predict the labels
+    dataset_name: name of the dataset
+
+    AUTHOR
+    Martina Balbi
+    '''
+
+    score = f1_score(y_test, y_pred)
+    print('%s F1 Score for dataset %s: %.2f' %
+          (model_name, dataset_name, score))
+    print('---------------------------------')
+
+    return 

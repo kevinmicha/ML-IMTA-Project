@@ -45,7 +45,7 @@ y_pred_gmm_kd = fit_gmm(X_train_kd, X_test_kd, y_train_kd, y_test_kd, 'kidney-di
 y_pred_nn_ba = fit_nn(X_train_ba, X_test_ba, y_train_ba, y_test_ba, 'banknote-auth')
 y_pred_nn_kd = fit_nn(X_train_kd, X_test_kd, y_train_kd, y_test_kd, 'kidney-disease')
 
-# Plot confusion matrixes
+# Plot confusion matrices and get f1 scores
 models = ['knn', 'svm', 'gmm', 'nn']
 y_pred = [[y_pred_knn_ba, y_pred_knn_kd], [y_pred_svm_ba, y_pred_svm_kd], [y_pred_gmm_ba, y_pred_gmm_kd], [y_pred_nn_ba, y_pred_nn_kd]]
 y_test = [y_test_ba, y_test_kd]
@@ -54,3 +54,4 @@ datasets = ['banknote-authentication', 'kidney-disease']
 for i in range(len(models)):
     for j in range(len(y_test)):
         plot_confusion_matrix(y_test[j], y_pred[i][j], models[i], datasets[j])
+        get_f1_score(y_test[j], y_pred[i][j], models[i], datasets[j])
