@@ -27,6 +27,8 @@ ML-IMTA-Project
 │   README.md                                   # this file
 │   requirements.txt
 |   main.py                                     # main python file 
+│   report-ML_Project.tex
+|   Report___ML_Project.pdf       
 ├── datasets
 │   ├── data_banknote_authentication.txt        # banknote auth dataset
 │   └── kidney_disease.csv                      # kidney disease dataset            
